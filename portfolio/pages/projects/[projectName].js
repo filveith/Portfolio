@@ -2,7 +2,10 @@
 
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+
 import Project from "../../components/projects/Project";
+import maria from "../api/db_connexion";
+const { pool } = maria;
 
 export default function ProjectDetails(props) {
 	const router = useRouter();
@@ -19,34 +22,32 @@ export default function ProjectDetails(props) {
 export async function getStaticPaths() {
 	// You don't hard code the paths but store them in a data base and fetch them
 
+	let projectsTitle = await pool.query("SELECT title FROM Projects");
+	await pool.end();
+
+	delete projectsTitle.meta;
+	let paths = projectsTitle.map((project) => ({
+		params: {
+			projectName: project.title.toString(),
+		},
+	}));
+
 	return {
 		fallback: false,
-		paths: [
-			{
-				params: {
-					projectName: "minesweeper-bot",
-				},
-			},
-			{
-				params: {
-					projectName: "discord-spotify-lyrics-status",
-				},
-			},
-		],
+		paths: paths,
 	};
 }
 
 export async function getStaticProps(context) {
 	const projectName = context.params.projectName;
-	return {
+    let project = await pool.query("SELECT * FROM Projects WHERE title=(?)", projectName);
+	// await pool.end();
+	delete project.meta;
+    project = project[0]
+
+    return {
 		props: {
-			project: {
-				key: projectName,
-				title: projectName,
-				image:
-					"https://raw.githubusercontent.com/filveith/BetterDiscord-Spotify-Lyrics-Status/main/Spotify.gif",
-				description: "Change your status...... ",
-			},
+			project: project
 		},
 		// revalidate: 1 // Usefull when the data changes very often in this case we refresh it every second
 	};

@@ -1,20 +1,14 @@
 import Project from "./Project";
+import ProjectShort from "./ProjectShort";
 
-function ProjectList(props) {
-    return (
-        <div>
-            {props.projects.map((project) => (
-                <Project
-                    key={project.key}
-                    id={project.key}
-                    title={project.title ?? "Project"}
-                    description={project.description ?? "This is a project"}
-                    images={project.images ?? ""}
-                    // repo={project.repo}
-                />
-            ))}
-        </div>
-    )
+export default function ProjectList(props) {
+	return (
+		<div id="ProjectList">
+			{props.projects.map((project) => (
+				<ProjectShort
+					project={project}
+				/>
+			))}
+		</div>
+	);
 }
-
-export default ProjectList;
