@@ -11,19 +11,12 @@ export default function ProjectDetails(props) {
 	const router = useRouter();
 	const project_name = router.query.projectName; // Get the projectName from url
 
-	return (
-		<Fragment>
-			<h1>- Project Page</h1>
-			<Project {...props.project} />
-		</Fragment>
-	);
+	return <Project {...props.project} />;
 }
 
 export async function getStaticPaths() {
-	// You don't hard code the paths but store them in a data base and fetch them
-
 	let projectsTitle = await pool.query("SELECT title FROM Projects");
-	await pool.end();
+	// await pool.end();
 
 	delete projectsTitle.meta;
 	let paths = projectsTitle.map((project) => ({
@@ -40,14 +33,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const projectName = context.params.projectName;
-    let project = await pool.query("SELECT * FROM Projects WHERE title=(?)", projectName);
+	let project = await pool.query(
+		"SELECT * FROM Projects WHERE title=(?)",
+		projectName
+	);
 	// await pool.end();
 	delete project.meta;
-    project = project[0]
+	project = project[0];
 
-    return {
+	return {
 		props: {
-			project: project
+			project: project,
 		},
 		// revalidate: 1 // Usefull when the data changes very often in this case we refresh it every second
 	};

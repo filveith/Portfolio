@@ -3,40 +3,36 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 import ProjectList from "../components/projects/ProjectList";
-
-const DUMMY_PROJECTS = [
-	{
-		id: 'p1',
-		title: 'discord-spotify-lyrics-status',
-		image: 'https://raw.githubusercontent.com/filveith/BetterDiscord-Spotify-Lyrics-Status/main/Spotify.gif',
-		description: 'Chnage your status...... '
-	},
-	{
-		id: 'minesweeper-bot',
-		title: 'minesweeper',
-		image: 'https://raw.githubusercontent.com/filveith/BetterDiscord-Spotify-Lyrics-Status/main/Spotify.gif',
-		description: 'Bot to play minesweeper...... '
-	}
-]
+import maria from "./api/db_connexion";
+const { pool } = maria;
 
 function HomePage(props) {
 	return (
 		<Fragment>
-			<h1>Home Page</h1>
-			<ProjectList
-				projects={props.projects}
-			/>
+			<h1>Who I am </h1>
+			<h1>My Projects</h1>
+			<ProjectList projects={props.projects} />
 		</Fragment>
 	);
 }
 
 export async function getStaticProps() {
+	const projects = await pool.query("SELECT * FROM Projects");
+	// const images = await pool.query("SELECT * FROM Images");
+	// await pool.end()
+
 	return {
 		props: {
-			projects: DUMMY_PROJECTS
+			projects: projects.map((project) => ({
+				title: project.title,
+				description: project.description,
+				github: project.github,
+				id: project.title,
+				key: project.projectId,
+			})),
 		},
 		// revalidate: 1 // Usefull when the data changes very often in this case we refresh it every second
-	}
+	};
 }
 
 export default HomePage;
