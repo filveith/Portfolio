@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container main {
+    margin-top: 9vh;
+}

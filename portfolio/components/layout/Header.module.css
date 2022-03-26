@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    /* margin-left: -50vh; */
+    margin-top: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 10px;
+    /* filter: blur(8px); */
+    opacity: 20%;
+}
