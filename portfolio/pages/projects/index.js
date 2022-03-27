@@ -10,7 +10,40 @@ export default function Projects(props) {
 }
 
 export async function getStaticProps() {
-	const projects = await pool.query("SELECT * FROM Projects");
+	let projects = await pool.query("SELECT * FROM Projects");
+	delete projects.meta;
+
+	for (let i = 0; i < projects.length; i++) {
+		let tag_project = await pool.query(
+			"SELECT * FROM Tags_Projects WHERE projectId=(?)",
+			projects[i].projectId
+		);
+		delete tag_project.meta;
+
+		let tags;
+
+		for (let j = 0; j < tag_project.length; j++) {
+			try {
+				let res = await pool.query(
+					"SELECT * FROM Tags WHERE tagId=(?)",
+					tag_project[j].tagId
+				);
+				delete res.meta;
+
+				if (tags) {
+					tags = [...tags, res[0]];
+				} else {
+					tags = [res[0]];
+				}
+			} catch (error) {}
+		}
+		if (tags) {
+			projects[i] = {
+				...projects[i],
+				tags: [...tags],
+			};
+		}
+	}
 	// const images = await pool.query("SELECT * FROM Images");
 	// await pool.end()
 
@@ -20,6 +53,7 @@ export async function getStaticProps() {
 				title: project.title,
 				description: project.description,
 				github: project.github,
+				tags: project.tags ?? {},
 				id: project.title,
 				key: project.projectId,
 			})),

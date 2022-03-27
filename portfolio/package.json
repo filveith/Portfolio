@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "mariadb": "^3.0.0",
     "next": "12.1.0",
     "react": "17.0.2",

@@ -4,6 +4,14 @@
     grid-template-columns: auto auto;
 }
 
+#me {
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
 #school,
 #work {
     width: 35vh;

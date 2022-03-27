@@ -1,51 +1,53 @@
 // fil.veith.com/
 import Link from "next/link";
 import { Fragment } from "react";
+import Image from "next/image";
 
 import ProjectList from "../components/projects/ProjectList";
 import maria from "./api/db_connexion";
 const { pool } = maria;
 
-import classes from "../styles/global.module.css";
-import ids from "../styles/index.module.css";
+import styles from "../styles/global.module.css";
+import classes from "../styles/index.module.css";
 
 export default function HomePage(props) {
 	return (
-		<div className={classes.home}>
-			<div id="me" className={classes.me}>
+		<div className={styles.home}>
+			<div id="me">
 				<h1>Who am I ?</h1>
-				<div className={classes.box}>
+				<div id={classes.me} className={styles.box}>
 					<p>
-						Hi I'm Fil Veith,
+						Hi I`&apos`m Fil Veith,
 						<br />
 						<br />
-						I'm a 19 years Franco-German student who loves learning new things,
+						I`&apos`m a 19 years Franco-German student who loves learning new things,
 						<br />
-						I have been
+						I have been learning new stuff since I`&apos`m born
 						<br />
 					</p>
+					<Image src={"/Fil_Veith.png"} alt="Click Me !" width={150} height={150} />
 				</div>
 			</div>
 
 			<div id="my_projects">
-				<div className={classes.box}>
-					<h1>My Projects</h1>
+				<h1>My Projects</h1>
+				<div className={styles.box}>
 					<ProjectList projects={props.projects} />
 				</div>
 			</div>
 
-			<div id="currently" className={classes.currently}>
+			<div id="currently" className={styles.currently}>
 				<h1>Currently doing this and that</h1>
-				<div id={ids.details_currently} className={classes.box}>
-					<div id={ids.school} className={classes.box}>
+				<div id={classes.details_currently} className={styles.box}>
+					<div id={classes.school} className={styles.box}>
 						<h2>Studying</h2>
 						<p>Epitech</p>
 					</div>
-					<div id={ids.work} className={classes.box}>
+					<div id={classes.work} className={styles.box}>
 						<h2>Working</h2>
 						<p>Big company</p>
 					</div>
-					<div id={ids.projects} className={classes.box}>
+					<div id={classes.projects} className={styles.box}>
 						<h2>Projects</h2>
 						<td>
 							<tr>Better Spotify</tr>
@@ -76,7 +78,7 @@ export async function getStaticProps() {
 				title: project.title,
 				description: project.description,
 				github: project.github,
-				id: project.title,
+				id: project.projectId,
 				key: project.projectId,
 			})),
 		},

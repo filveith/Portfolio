@@ -6,4 +6,11 @@
     padding-top: -10px;
     margin: 20px;
     width: 35vh;
+    height: 30vh;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
