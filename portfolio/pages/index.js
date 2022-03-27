@@ -13,7 +13,18 @@ export default function HomePage(props) {
 	return (
 		<div className={classes.home}>
 			<div id="me" className={classes.me}>
-				<h1>Who I am </h1>
+				<h1>Who am I ?</h1>
+				<div className={classes.box}>
+					<p>
+						Hi I'm Fil Veith,
+						<br />
+						<br />
+						I'm a 19 years Franco-German student who loves learning new things,
+						<br />
+						I have been
+						<br />
+					</p>
+				</div>
 			</div>
 
 			<div id="my_projects">
@@ -46,6 +57,9 @@ export default function HomePage(props) {
 
 			<div id="contact">
 				<h1>Contact Me</h1>
+				<form action="" method="post">
+					<input type="email" name="" id="" />
+				</form>
 			</div>
 		</div>
 	);

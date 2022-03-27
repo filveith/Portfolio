@@ -4,7 +4,10 @@
     grid-template-columns: auto auto;
 }
 
-#school {}
+#school,
+#work {
+    width: 35vh;
+}
 
 #work {}
 
