@@ -1,0 +1,14 @@
+#details_currently {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+}
+
+#school {}
+
+#work {}
+
+#projects {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

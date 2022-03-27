@@ -1,9 +1,17 @@
-.container {
+.home {}
+
+.home h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.me {}
+
+.box {
     border-radius: 20px;
     border: 1px grey solid;
     box-shadow: 2px 7px 10px grey;
     padding: 10px;
     padding-top: -10px;
     margin: 20px;
-    width: 35vh;
 }
