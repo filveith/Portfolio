@@ -1,4 +1,3 @@
-import Project from "./Project";
 import ProjectShort from "./ProjectShort";
 import classes from "./ProjectList.module.css";
 

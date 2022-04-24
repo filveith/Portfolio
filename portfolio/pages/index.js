@@ -67,6 +67,10 @@ export default function HomePage(props) {
 					<input type="email" name="" id="" />
 				</form>
 			</div>
+			<script
+				type="text/javascript"
+				src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"
+			></script>
 		</div>
 	);
 }

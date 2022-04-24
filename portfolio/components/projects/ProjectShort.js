@@ -17,14 +17,14 @@ export default function ProjectShort(props) {
 	}
 
 	return (
-		<div id={project.title} className={classes.container}>
-			<h1>
+		<div id={project.title} className={classes.container} data-tilt data-tilt-reverse="true" data-tilt-scale="1.1">	
+			 <h1 className={classes.title}>
 				<Link href={"/projects/" + project.title}>
 					{project.title ?? "A project"}
 				</Link>
 			</h1>
 			<div className={classes.tags}>{tags(project.tags)}</div>
-			<p>{project.description}</p>
+			<p className={classes.description}>{project.description}</p>
 		</div>
 	);
 }
