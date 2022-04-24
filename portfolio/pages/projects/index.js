@@ -2,32 +2,47 @@
 import { Fragment } from "react";
 
 import ProjectList from "../../components/projects/ProjectList";
-import maria from "../api/db_connexion";
-const { pool } = maria;
 
 export default function Projects(props) {
 	return <ProjectList projects={props.projects} />;
 }
 
 export async function getStaticProps() {
-	let projects = await pool.query("SELECT * FROM Projects");
+	let projects = await fetch("http://filveith.ddns.net:2000/projects", {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+		},
+	});
 	delete projects.meta;
 
 	for (let i = 0; i < projects.length; i++) {
-		let tag_project = await pool.query(
-			"SELECT * FROM Tags_Projects WHERE projectId=(?)",
-			projects[i].projectId
+		let tag_project = await fetch(
+			"http://filveith.ddns.net:2000/projects_tags/" + projects[i].projectId,
+			{
+				method: "GET",
+				headers: {
+					Accept: "application/json",
+				},
+			}
 		);
+
 		delete tag_project.meta;
 
 		let tags;
 
 		for (let j = 0; j < tag_project.length; j++) {
 			try {
-				let res = await pool.query(
-					"SELECT * FROM Tags WHERE tagId=(?)",
-					tag_project[j].tagId
+				let res = await fetch(
+					"http://filveith.ddns.net:2000/tags/" + tag_project[j].tagId,
+					{
+						method: "GET",
+						headers: {
+							Accept: "application/json",
+						},
+					}
 				);
+
 				delete res.meta;
 
 				if (tags) {

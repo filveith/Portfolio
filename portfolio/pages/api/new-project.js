@@ -1,7 +1,5 @@
 // /api/new-project
 // POST
-import maria from "./db_connexion.js";
-const { pool } = maria;
 
 export default async function handler(req, res) {
 	if (req.method === "POST") {

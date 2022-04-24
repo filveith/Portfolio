@@ -8,29 +8,12 @@ export default function ProjectShort(props) {
 	const project = props.project;
 
 	function tags(tags) {
-		return (
-			<Fragment>
-				<Tags tag={'JavaScript'} color={'#ad4d4d'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-				<Tags tag={'Readct'} color={'#3bcc72'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-				<Tags tag={'React'} color={'#3bcc72'} />
-			</Fragment>
-		);
-		// let tagList
-		// for (let i = 0; i < tags.length; i++) {
-		// 	let tag = tags[i]
-		// 	console.log(tag.color);
-		// 	tagList += <Tags tag={tag}/>
-		// }
-		// return (
-		// 	<div id="tagList">
-		// 		{tagList}
-		// 	</div>
-		// )
+		let tag_list = [];
+		for (let tag of tags) {
+			tag_list.push(<Tags tag={tag.tagName} color={tag.color} />);
+		}
+
+		return <Fragment>{tag_list}</Fragment>;
 	}
 
 	return (

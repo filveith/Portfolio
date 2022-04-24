@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import { Fragment } from "react";
 
 import Project from "../../components/projects/Project";
-import maria from "../api/db_connexion";
-const { pool } = maria;
 
 export default function ProjectDetails(props) {
 	const router = useRouter();
@@ -15,8 +13,12 @@ export default function ProjectDetails(props) {
 }
 
 export async function getStaticPaths() {
-	let projectsTitle = await pool.query("SELECT title FROM Projects");
-	// await pool.end();
+	let projectsTitle = await (await fetch("http://filveith.ddns.net:2000/projects_title", {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+		},
+	})).json();
 
 	delete projectsTitle.meta;
 	let paths = projectsTitle.map((project) => ({
@@ -33,10 +35,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const projectName = context.params.projectName;
-	let project = await pool.query(
-		"SELECT * FROM Projects WHERE title=(?)",
-		projectName
-	);
+	let project = await (await fetch("http://filveith.ddns.net:2000/projects/" + projectName, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+		},
+	})).json();
+
 	// await pool.end();
 	delete project.meta;
 	project = project[0];

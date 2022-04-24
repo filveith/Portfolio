@@ -4,8 +4,6 @@ import { Fragment } from "react";
 import Image from "next/image";
 
 import ProjectList from "../components/projects/ProjectList";
-import maria from "./api/db_connexion";
-const { pool } = maria;
 
 import styles from "../styles/global.module.css";
 import classes from "../styles/index.module.css";
@@ -17,15 +15,21 @@ export default function HomePage(props) {
 				<h1>Who am I ?</h1>
 				<div id={classes.me} className={styles.box}>
 					<p>
-						Hi I`&apos`m Fil Veith,
+						Hi I'm Fil Veith,
 						<br />
 						<br />
-						I`&apos`m a 19 years Franco-German student who loves learning new things,
+						I'm a 19 years Franco-German student who loves learning
+						new things,
 						<br />
-						I have been learning new stuff since I`&apos`m born
+						I have been learning new stuff since I'm born
 						<br />
 					</p>
-					<Image src={"/Fil_Veith.png"} alt="Click Me !" width={150} height={150} />
+					<Image
+						src={"/Fil_Veith.png"}
+						alt="Click Me !"
+						width={150}
+						height={150}
+					/>
 				</div>
 			</div>
 
@@ -68,18 +72,24 @@ export default function HomePage(props) {
 }
 
 export async function getStaticProps() {
-	const projects = await pool.query("SELECT * FROM Projects");
-	// const images = await pool.query("SELECT * FROM Images");
-	// await pool.end()
+	const api_data = await fetch("http://localhost:3000/api/projects", {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+		},
+	});
+	const projects = (await api_data.json()).projects;
 
 	return {
 		props: {
 			projects: projects.map((project) => ({
-				title: project.title,
-				description: project.description,
-				github: project.github,
-				id: project.projectId,
-				key: project.projectId,
+				title: project.details.title,
+				description: project.details.description,
+				github: project.details.github,
+				images: project.images,
+				id: project.details.projectId,
+				key: project.details.projectId,
+				tags: project.tags,
 			})),
 		},
 		// revalidate: 1 // Usefull when the data changes very often in this case we refresh it every second

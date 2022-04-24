@@ -1,0 +1,69 @@
+{
+    "minesweeper": {
+        "details": {
+            "projectId": 1,
+            "title": "minesweeper",
+            "description": "A bot that plays minesweeper for you",
+            "github": "https://github.com/filveith/Minesweeper-bot"
+        },
+        "tags": [
+            { "tagId": 1, "tagName": "JavaScript", "color": "#ffffff" },
+            { "tagId": 2, "tagName": "React", "color": "#ffffff" }
+        ],
+        "images": [{
+            "imageId": 1,
+            "projectId": 1,
+            "image": "https://raw.githubusercontent.com/filveith/Minesweeper-bot/main/img/9x9.gif"
+        }]
+    },
+    "BetterDiscord-Spotify-Lyrics-Status": {
+        "details": {
+            "projectId": 2,
+            "title": "BetterDiscord-Spotify-Lyrics-Status",
+            "description": "Change your discord status",
+            "github": "https://github.com/filveith/BetterDiscord-Spotify-Lyrics-Status"
+        },
+        "tags": [],
+        "images": []
+    },
+    "OCR": {
+        "details": {
+            "projectId": 3,
+            "title": "OCR",
+            "description": "A basic OCR that uses a knn, made in python",
+            "github": "https://github.com/filveith/OCR"
+        },
+        "tags": [],
+        "images": []
+    },
+    "Banggood-money-scraper": {
+        "details": {
+            "projectId": 4,
+            "title": "Banggood-money-scraper",
+            "description": "A scrapper that recolts virtual money of a website",
+            "github": "https://github.com/filveith/banggood-money-scraper"
+        },
+        "tags": [{ "tagId": 3, "tagName": "React-Native", "color": "#ffffff" }],
+        "images": []
+    },
+    "Gomoku": {
+        "details": {
+            "projectId": 5,
+            "title": "Gomoku",
+            "description": "A \"connect 4\" but with some tweaks, it was a 2 person school project during my first year in CS",
+            "github": "https://github.com/filveith/DUT-Gomoku-2021"
+        },
+        "tags": [],
+        "images": []
+    },
+    "Sokoban": {
+        "details": {
+            "projectId": 6,
+            "title": "Sokoban",
+            "description": "The well known \"Sokoban\" made in Java for a first year CS degree project",
+            "github": "https://github.com/filveith/DUT-Sokoban-2021"
+        },
+        "tags": [],
+        "images": []
+    }
+}
