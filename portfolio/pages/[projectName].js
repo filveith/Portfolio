@@ -3,7 +3,7 @@
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 
-import Project from "../../components/projects/Project";
+import Project from "../components/projects/Project";
 
 export default function ProjectDetails(props) {
 	// const router = useRouter();

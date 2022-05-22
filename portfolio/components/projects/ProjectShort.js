@@ -19,7 +19,7 @@ export default function ProjectShort(props) {
 	return (
 		<div id={project.title} className={classes.container} data-tilt data-tilt-reverse="true" data-tilt-scale="1.1">	
 			 <h1 className={classes.title}>
-				<Link href={"/projects/" + project.title}>
+				<Link href={"/" + project.title}>
 					{project.title ?? "A project"}
 				</Link>
 			</h1>
