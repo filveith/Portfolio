@@ -19,6 +19,7 @@
         "node-fetch": "^3.2.4",
         "react": "17.0.2",
         "react-dom": "17.0.2",
+        "sass": "^1.52.1",
         "vanilla-tilt": "^1.7.2"
     },
     "devDependencies": {

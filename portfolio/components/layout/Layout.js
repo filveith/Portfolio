@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Header from "./Header";
-import classes from './Layout.module.css'
+import classes from './Layout.module.scss'
 
 export default function Layout(props){
     return (

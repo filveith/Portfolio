@@ -1,5 +1,5 @@
 import ProjectShort from "./ProjectShort";
-import classes from "./ProjectList.module.css";
+import classes from "./ProjectList.module.scss";
 
 export default function ProjectList(props) {
 	return (

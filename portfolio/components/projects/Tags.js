@@ -1,4 +1,4 @@
-import classes from "./Tags.module.css";
+import classes from "./Tags.module.scss";
 
 export default function Tags(props) {
 	const tag = props.tag;

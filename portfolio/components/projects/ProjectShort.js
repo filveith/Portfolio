@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Fragment } from "react";
 
-import classes from "./ProjectShort.module.css";
+import classes from "./ProjectShort.module.scss";
 import Tags from "./Tags";
 
 export default function ProjectShort(props) {

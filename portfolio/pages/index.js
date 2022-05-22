@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import ProjectList from "../components/projects/ProjectList";
 
-import styles from "../styles/global.module.css";
-import classes from "../styles/index.module.css";
+import styles from "../styles/global.module.scss";
+import classes from "../styles/index.module.scss";
 import Contact from "../components/contact/Contact";
 import getProjects from "../api/project";
 
