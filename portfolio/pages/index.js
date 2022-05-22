@@ -7,6 +7,7 @@ import ProjectList from "../components/projects/ProjectList";
 
 import styles from "../styles/global.module.css";
 import classes from "../styles/index.module.css";
+import Contact from "../components/contact/Contact";
 
 export default function HomePage(props) {
 	return (
@@ -15,13 +16,13 @@ export default function HomePage(props) {
 				<h1>Who am I ?</h1>
 				<div id={classes.me} className={styles.box}>
 					<p>
-						Hi I'm Fil Veith,
+						Hi I\'m Fil Veith,
 						<br />
 						<br />
-						I'm a 19 years Franco-German student who loves learning
+						I\'m a 19 years Franco-German student who loves learning
 						new things,
 						<br />
-						I have been learning new stuff since I'm born
+						I have been learning new stuff since I\'m born
 						<br />
 					</p>
 					<Image
@@ -61,12 +62,8 @@ export default function HomePage(props) {
 				</div>
 			</div>
 
-			<div id="contact">
-				<h1>Contact Me</h1>
-				<form action="" method="post">
-					<input type="email" name="" id="" />
-				</form>
-			</div>
+			<Contact/>
+
 			<script
 				type="text/javascript"
 				src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"
