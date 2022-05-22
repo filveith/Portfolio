@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 		let data = []
 
 		const projects = await (
-			await fetch("http://filveith.ddns.net:2000/projects", {
+			await fetch("http://veith.fr:2000/projects", {
 				method: "GET",
 				headers: {
 					Accept: "application/json",
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 
 			let tags_id = await (
 				await fetch(
-					`http://filveith.ddns.net:2000/projects_tags/${project.projectId}`,
+					`http://veith.fr:2000/projects_tags/${project.projectId}`,
 					{
 						method: "GET",
 						headers: {
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 			for (let tagId of tags_id) {
 				let tags = await (
 					await fetch(
-						`http://filveith.ddns.net:2000/tags/${tagId.tagId}`,
+						`http://veith.fr:2000/tags/${tagId.tagId}`,
 						{
 							method: "GET",
 							headers: {
@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
 			let images = await (
 				await fetch(
-					`http://filveith.ddns.net:2000/images/${project.projectId}`,
+					`http://veith.fr:2000/images/${project.projectId}`,
 					{
 						method: "GET",
 						headers: {

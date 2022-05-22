@@ -5,7 +5,7 @@ export default function Contact() {
 	return (
 		<div id="contact">
 			<h1>Contact Me</h1>
-			<form action="" method="post" onSubmit={console.log("Helo")}>
+			<form action="" method="post" onSubmit={console.log("Hello : file:Contact.js")}>
 				<input
 					type="email"
 					name=""

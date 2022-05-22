@@ -8,21 +8,22 @@ import ProjectList from "../components/projects/ProjectList";
 import styles from "../styles/global.module.css";
 import classes from "../styles/index.module.css";
 import Contact from "../components/contact/Contact";
+import getProjects from "../api/project";
 
 export default function HomePage(props) {
 	return (
 		<div className={styles.home}>
-			<div id="me">
+			<div id="about_me">
 				<h1>Who am I ?</h1>
 				<div id={classes.me} className={styles.box}>
 					<p>
-						Hi I\'m Fil Veith,
+						Hi I'm Fil Veith,
 						<br />
 						<br />
-						I\'m a 19 years Franco-German student who loves learning
+						I'm a 19 years Franco-German student who loves learning
 						new things,
 						<br />
-						I have been learning new stuff since I\'m born
+						I have been learning new stuff since I'm born
 						<br />
 					</p>
 					<Image
@@ -62,7 +63,7 @@ export default function HomePage(props) {
 				</div>
 			</div>
 
-			<Contact/>
+			<Contact id="contact"/>
 
 			<script
 				type="text/javascript"
@@ -73,24 +74,19 @@ export default function HomePage(props) {
 }
 
 export async function getStaticProps() {
-	const api_data = await fetch("http://localhost:3000/api/projects", {
-		method: "GET",
-		headers: {
-			Accept: "application/json",
-		},
-	});
-	const projects = (await api_data.json()).projects;
+
+	const projects = await getProjects();
 
 	return {
 		props: {
-			projects: projects.map((project) => ({
+			projects: projects.map(project => ({
 				title: project.details.title,
 				description: project.details.description,
 				github: project.details.github,
 				images: project.images,
 				id: project.details.projectId,
 				key: project.details.projectId,
-				tags: project.tags,
+				tags: project.tags
 			})),
 		},
 		// revalidate: 1 // Usefull when the data changes very often in this case we refresh it every second

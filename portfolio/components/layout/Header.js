@@ -7,9 +7,9 @@ export default function Header() {
 		<div className={classes.container}>
 			<header className={classes.header}>
 				<Link href="/">Home</Link>
-				<Link href="/projects">Projects</Link>
-				<Link href="/about">Me</Link>
-				<Link href="/contact">Contact</Link>
+				<Link href="/#about_me">Me</Link>
+				<Link href="/#my_projects">Projects</Link>
+				<Link href="/#contact">Contact</Link>
 			</header>
 		</div>
 	);

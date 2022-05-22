@@ -6,24 +6,24 @@ import { Fragment } from "react";
 import Project from "../../components/projects/Project";
 
 export default function ProjectDetails(props) {
-	const router = useRouter();
-	const project_name = router.query.projectName; // Get the projectName from url
+	// const router = useRouter();
+	// const project_name = router.query.projectName; // Get the projectName from url
 
 	return <Project {...props.project} />;
 }
 
 export async function getStaticPaths() {
-	let projectsTitle = await (await fetch("http://filveith.ddns.net:2000/projects_title", {
+	let projects = await (await fetch("http://veith.fr:2000/projects", {
 		method: "GET",
 		headers: {
 			Accept: "application/json",
 		},
 	})).json();
 
-	delete projectsTitle.meta;
-	let paths = projectsTitle.map((project) => ({
+	delete projects.meta;
+	let paths = projects.map((project) => ({
 		params: {
-			projectName: project.title.toString(),
+			projectName: project.title,
 		},
 	}));
 
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const projectName = context.params.projectName;
-	let project = await (await fetch("http://filveith.ddns.net:2000/projects/" + projectName, {
+	let project = await (await fetch("http://veith.fr:2000/projects/" + projectName, {
 		method: "GET",
 		headers: {
 			Accept: "application/json",
@@ -45,6 +45,8 @@ export async function getStaticProps(context) {
 	// await pool.end();
 	delete project.meta;
 	project = project[0];
+	// console.log(project);
+	//TODO add images and tags to this props, add a new api function 
 
 	return {
 		props: {
