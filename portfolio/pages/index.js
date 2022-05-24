@@ -1,14 +1,11 @@
-// fil.veith.com/
-import Link from "next/link";
-import { Fragment } from "react";
 import Image from "next/image";
 
 import ProjectList from "../components/projects/ProjectList";
+import Contact from "../components/contact/Contact";
+import getProjects from "../api/project";
 
 import styles from "../styles/global.module.scss";
 import classes from "../styles/index.module.scss";
-import Contact from "../components/contact/Contact";
-import getProjects from "../api/project";
 
 export default function HomePage(props) {
 	return (

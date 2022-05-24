@@ -10,7 +10,7 @@ export default function ProjectShort(props) {
 	function tags(tags) {
 		let tag_list = [];
 		for (let tag of tags) {
-			tag_list.push(<Tags tag={tag.tagName} color={tag.color} />);
+			tag_list.push(<Tags key={tag.tagId} tag={tag.tagName} color={tag.color} />);
 		}
 
 		return <Fragment>{tag_list}</Fragment>;
