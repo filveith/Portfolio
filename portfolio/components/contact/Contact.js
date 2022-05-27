@@ -1,16 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
 import RichText from "./RichText";
 
 export default function Contact() {
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
-	const [submitted, setSubmitted] = useState(false);
 
-	const [value, onChange] = useState("");
+	const router = useRouter()
 
 	const handleSubmit = async (event) => {
 		// Stop the form from submitting and refreshing the page.
@@ -20,7 +16,7 @@ export default function Contact() {
 			from: event.target.email.value,
 		  	firstName: event.target.firstName.value,
 		  	lastName: event.target.lastName.value,
-			message: value,
+			message: message,
 		}
 	
 		const JSONdata = JSON.stringify(data)
@@ -37,23 +33,21 @@ export default function Contact() {
 		}
 	
 		// Send the form data to our forms API on Vercel and get a response.
-		console.log("Sending");
 		const response = await fetch(endpoint, options)
-		console.log("Sent");
 		
+		router.push('/emailStatus')
 	}
 
 	return (
 		<div id="contact">
 			<h1>Contact Me</h1>
 
-			<form action="/emailStatus" method="POST" onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<input
 					type="email"
 					name=""
 					id="email"
 					placeholder="fil@veith.com"
-					value={email}
 					required
 				/>
 				<input
@@ -76,9 +70,8 @@ export default function Contact() {
 				/>
 				<RichText
 					id="message"
-					onChange={onChange}
-					value={value}
-					// TODO add onChange for this
+					onChange={setMessage}
+					value={message}
 					controls={[
 						["bold", "italic", "underline", "link"],
 						["unorderedList", "h1", "h2", "h3"],
